@@ -143,6 +143,10 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
     itemListElement,
   }
 
+  window.prismic = {
+    endpoint: 'https://previewtest.cdn.prismic.io/api/v2'
+  }
+
   return (
     <>
       <Helmet title={seo.title}>
@@ -154,6 +158,8 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
         {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
+        
+        <script type="text/javascript" src="https://static.cdn.prismic.io/prismic.min.js"></script>
       </Helmet>
       <Facebook
         desc={seo.description}
